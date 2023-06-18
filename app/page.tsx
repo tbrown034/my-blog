@@ -14,6 +14,12 @@ export default function Home() {
       >
         See Posts
       </Link>
+      <Link
+        className="p-2 rounded bg-slate-600 hover:bg-slate-500 active:bg-slate-400"
+        href="/posts/new"
+      >
+        Create Post
+      </Link>
     </main>
   );
 }

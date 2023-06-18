@@ -22,7 +22,7 @@ export default function PostsPage() {
   }, []);
 
   return (
-    <main className="flex flex-col items-center min-h-screen gap-4 py-20">
+    <section className="flex flex-col items-center min-h-screen gap-4 py-20">
       <h1 className="text-4xl font-bold">Blog Posts</h1>
       <div className="flex flex-col gap-8 ">
         {posts.map((post) => (
@@ -41,6 +41,6 @@ export default function PostsPage() {
       <Link className="p-2 rounded-lg bg-slate-700" href="/">
         Back to Home
       </Link>
-    </main>
+    </section>
   );
 }
