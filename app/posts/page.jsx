@@ -1,8 +1,7 @@
-// app/posts/page.jsx
-
 "use client";
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
+import { motion } from "framer-motion";
 
 export default function PostsPage() {
   const [posts, setPosts] = useState([]);
@@ -21,12 +20,24 @@ export default function PostsPage() {
     fetchPosts();
   }, []);
 
+  const fadeIn = {
+    initial: { opacity: 0, y: -10 },
+    animate: { opacity: 1, y: 0 },
+  };
+
   return (
-    <section className="flex flex-col items-center min-h-screen gap-4 py-20">
+    <section className="flex flex-col items-center min-h-screen gap-4 py-20 text-blue-800 bg-blue-200">
       <h1 className="text-4xl font-bold">Blog Posts</h1>
       <div className="flex flex-col gap-8 ">
         {posts.map((post) => (
-          <div className="flex flex-col gap-1" key={post.id}>
+          <motion.div
+            className="flex flex-col gap-1"
+            key={post.id}
+            variants={fadeIn}
+            initial="initial"
+            animate="animate"
+            transition={{ duration: 0.5, delay: 0.1 * post.id }}
+          >
             <h2 className="text-2xl underline underline-offset-4">
               {post.title}
             </h2>
@@ -35,10 +46,10 @@ export default function PostsPage() {
             <Link className="text-blue-500" href="/">
               Read More
             </Link>
-          </div>
+          </motion.div>
         ))}
       </div>
-      <Link className="p-2 rounded-lg bg-slate-700" href="/">
+      <Link className="p-2 text-blue-200 bg-blue-800 rounded-lg" href="/">
         Back to Home
       </Link>
     </section>
